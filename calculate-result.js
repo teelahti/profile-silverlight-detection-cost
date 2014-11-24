@@ -10,7 +10,7 @@
       result = document.getElementById("result");
 
   result.textContent = "Detection logic took "
-    + (end - start) + " ms, extra redirect ~" + (Date.now() - end)
+    + (end - start) + " ms, extra redirect ~" + (window.redirectDone - end)
     + " ms on top of that.";
 
 }());
