@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting...</title>
+  <script>
+    // Poor mans profiler, just get start time and add it to redirect url
+    // to calculate. Could use iframe + navigation timing API for more
+    // granular results.
+    var startTime = Date.now();
+  </script>
+</head>
+<body>
+  <i>Redirecting...</i>
+  <script>
+  (function () {
+    function supportsSilverlight() {
+      var supported = false;
+
+      try {
+        var tryOlderIE = false;
+
+        try {
+          var plugin = navigator.plugins["Silverlight Plug-In"];
+          if (plugin) {
+            supported = true;
+          }
+          else {
+            tryOlderIE = true;
+          }
+        }
+        catch (e) {
+          tryOlderIE = true;
+        }
+
+        if (tryOlderIE) {
+          // Detect installation on IE10 and earlier IE browsers via ActiveXObject
+          // Note, that the following IE setting (via group policy or locally)
+          // breaks this detection logic and there is nothing we can do about it.
+          //
+          // Tools > Internet options > Security > Custom Level
+          // > ActiveX controls and plug-ins
+          // > Enable for Initializing and Script ActiveX controls not marked as safe
+          var control = new ActiveXObject('AgControl.AgControl');
+          supported = true;
+        }
+      }
+      catch (e) {
+        console.log(e);
+        supported = false;
+      }
+
+      return supported;
+    }
+
+    var href = supportsSilverlight() ? "silverlight-supported.html" : "silverlight-not-supported.html";
+    window.location.href = href + "?" + startTime + "-" + Date.now();
+  }());
+</script>
+</body>
+</html>

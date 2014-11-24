@@ -1,0 +1,16 @@
+{
+  "name": "profile-silverlight-detection-cost",
+  "version": "0.0.0",
+  "description": "Test how much extra time does Silverlight detection during redirect take.",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^3.8.10",
+    "gulp-webserver": "^0.8.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "tero@teelahti.fi",
+  "license": "ISC"
+}
